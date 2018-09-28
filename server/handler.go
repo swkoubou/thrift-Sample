@@ -11,11 +11,12 @@ type Default struct {
 }
 
 func NewDefault() *Default {
-	return &Default{}
+	return &Default{
+		make(map[int32]*goSample.Message, 0),
+	}
 }
 
 func (d *Default) Ping(ctx context.Context) (message string, err error) {
-	fmt.Print("ping()\n")
 	return "pong", nil
 }
 
