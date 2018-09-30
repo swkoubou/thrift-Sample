@@ -81,22 +81,16 @@ function promiseMessage() {
     let client = thriftHelper.thriftClient();
     let message = makeMessage();
     new Promise((resolve) => {
-        let res = client.SendMessage(message);
-        console.log(res);
-        resolve(res);
+        resolve(client.SendMessage(message));
     }).then(res => {
         console.log("sendRes");
         console.log(res);
-        client.GetMessage(id, res => {
-            return res;
-        });
+        return client.GetMessage(id);
     }).then(res => {
         console.log("getRes");
         console.log(res);
         id++;
-        client.GetMessage(id, (res) => {
-            return res;
-        });
+        return client.GetMessage(id);
     }).then(res => {
         console.log("getRes");
         console.log(res);
@@ -109,23 +103,16 @@ function promiseMessage() {
 function promiseWSMessage() {
     let message = makeMessage();
     new Promise((resolve) => {
-        thriftWSConnection.SendMessage(message, res => {
-            console.log(res);
-            resolve(res);
-        });
+        resolve(thriftWSConnection.SendMessage(message));
     }).then(res => {
         console.log("sendRes");
         console.log(res);
-        thriftWSConnection.GetMessage(id, res => {
-            return res;
-        });
+        return thriftWSConnection.GetMessage(id);
     }).then(res => {
         console.log("getRes");
         console.log(res);
         id++;
-        thriftWSConnection.GetMessage(id, res => {
-            return res;
-        });
+        return thriftWSConnection.GetMessage(id);
     }).then(res => {
         console.log("getRes");
         console.log(res);
