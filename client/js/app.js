@@ -5,7 +5,8 @@ class thriftHelper {
         let protocol = new Thrift.TJSONProtocol(transport);
         return new DefaultClient(protocol);
     }
-    static thriftWSClient(){
+
+    static thriftWSClient() {
         let endpoint = `ws://localhost:9999/wsThrift`;
         let transport = new Thrift.TWebSocketTransport(endpoint);
         let protocol = new Thrift.TJSONProtocol(transport);
@@ -17,6 +18,7 @@ class thriftHelper {
 let thriftWSConnection = thriftHelper.thriftWSClient();
 
 let id = 0;
+
 function makeMessage() {
     let messageElm = document.querySelector("#message-box");
     return new Message({
@@ -28,14 +30,14 @@ function makeMessage() {
 
 function callbackPing() {
     let client = thriftHelper.thriftClient();
-    client.Ping(res=>{
+    client.Ping(res => {
         console.log(res);
     });
     console.log("end");
 }
 
 function callbackWSPing() {
-    thriftWSConnection.Ping(res=>{
+    thriftWSConnection.Ping(res => {
         console.log(res);
     });
     console.log("end");
@@ -56,12 +58,12 @@ function returnWSPing() {
 
 function promisePing() {
     let client = thriftHelper.thriftClient();
-    new Promise( (resolve) => {
+    new Promise((resolve) => {
         let res = client.Ping();
         resolve(res);
     }).then(res => {
         console.log(res);
-    }).catch(err =>{
+    }).catch(err => {
         console.log(err);
     });
     console.log("end");
@@ -69,7 +71,7 @@ function promisePing() {
 
 function promiseWSPing() {
     new Promise((resolve) => {
-        thriftWSConnection.Ping(res=>{
+        thriftWSConnection.Ping(res => {
             resolve(res);
         });
     }).then(res => {
@@ -83,16 +85,16 @@ function promiseWSPing() {
 function callbackMessage() {
     let client = thriftHelper.thriftClient();
     let message = makeMessage();
-    client.SendMessage(message,(res)=>{
+    client.SendMessage(message, (res) => {
         console.log("sendRes");
         console.log(res);
     });
-    client.GetMessage(id,(res)=>{
+    client.GetMessage(id, (res) => {
         console.log("getRes");
         console.log(res);
     });
     id++;
-    client.GetMessage(id,(res)=>{
+    client.GetMessage(id, (res) => {
         console.log("getRes");
         console.log(res);
     });
@@ -101,16 +103,16 @@ function callbackMessage() {
 
 function callbackWSMessage() {
     let message = makeMessage();
-    thriftWSConnection.SendMessage(message,(res)=>{
+    thriftWSConnection.SendMessage(message, (res) => {
         console.log("sendRes");
         console.log(res);
     });
-    thriftWSConnection.GetMessage(id,(res)=>{
+    thriftWSConnection.GetMessage(id, (res) => {
         console.log("getRes");
         console.log(res);
     });
     id++;
-    thriftWSConnection.GetMessage(id,(res)=>{
+    thriftWSConnection.GetMessage(id, (res) => {
         console.log("getRes");
         console.log(res);
     });
@@ -151,27 +153,27 @@ function returnWSMessage() {
 function promiseMessage() {
     let client = thriftHelper.thriftClient();
     let message = makeMessage();
-    new Promise((resolve) =>{
+    new Promise((resolve) => {
         let res = client.SendMessage(message);
         console.log(res);
         resolve(res);
-    }).then(res =>{
+    }).then(res => {
         console.log("sendRes");
         console.log(res);
-        client.GetMessage(id,res=>{
+        client.GetMessage(id, res => {
             return res;
         });
     }).then(res => {
         console.log("getRes");
         console.log(res);
         id++;
-        client.GetMessage(id,(res)=>{
+        client.GetMessage(id, (res) => {
             return res;
         });
-    }).then(res=>{
+    }).then(res => {
         console.log("getRes");
         console.log(res);
-    }).catch(err=>{
+    }).catch(err => {
         console.log(err);
     });
     console.log("end");
@@ -179,28 +181,28 @@ function promiseMessage() {
 
 function promiseWSMessage() {
     let message = makeMessage();
-    new Promise((resolve)=>{
-        thriftWSConnection.SendMessage(message,res => {
+    new Promise((resolve) => {
+        thriftWSConnection.SendMessage(message, res => {
             console.log(res);
             resolve(res);
         });
-    }).then(res=>{
+    }).then(res => {
         console.log("sendRes");
         console.log(res);
-        thriftWSConnection.GetMessage(id,res => {
+        thriftWSConnection.GetMessage(id, res => {
             return res;
         });
-    }).then(res=>{
+    }).then(res => {
         console.log("getRes");
         console.log(res);
         id++;
-        thriftWSConnection.GetMessage(id,res => {
+        thriftWSConnection.GetMessage(id, res => {
             return res;
         });
-    }).then(res=>{
+    }).then(res => {
         console.log("getRes");
         console.log(res);
-    }).catch(err=>{
+    }).catch(err => {
         console.log(err);
     });
     console.log("end");
