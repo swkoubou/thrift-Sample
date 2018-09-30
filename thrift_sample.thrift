@@ -1,6 +1,6 @@
 namespace go goSample
 
-enum MassageType {
+enum MessageType {
 	NORMAL = 1;
 	IMAGE = 2;
 	VIDEO = 3;
@@ -8,7 +8,7 @@ enum MassageType {
 
 struct Message {
 	1: i32 id;
-	2: MassageType type,
+	2: MessageType type,
 	3: string Content,
 }
 
