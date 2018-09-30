@@ -29,8 +29,7 @@ function returnWSPing() {
 function promisePing() {
     let client = thriftHelper.thriftClient();
     new Promise((resolve) => {
-        let res = client.Ping();
-        resolve(res);
+        resolve(client.Ping());
     }).then(res => {
         console.log(res);
     }).catch(err => {
