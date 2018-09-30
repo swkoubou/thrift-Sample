@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="js/libs/thrift.js"></script>
+    <script src="../gen-js/Default.js"></script>
+    <script src="../gen-js/thrift_sample_types.js"></script>
 </head>
 <body>
-
+<input type="text" id="message-box" value="さんぷる">
+<div id="ping-button">
+    <button id="ping-callback">ping-callback</button>
+    <button id="ping-return">ping-return</button>
+    <button id="ping-promise">ping-promise</button>
+    <button id="ping-callback-ws">ping-callback-ws</button>
+    <button id="ping-return-ws">ping-return-ws</button>
+    <button id="ping-promise-ws">ping-promise-ws</button>
+</div>
+<div id="message-button">
+    <button id="message-callback">message-callback</button>
+    <button id="message-return">message-return</button>
+    <button id="message-promise">message-promise</button>
+    <button id="message-callback-ws">message-callback-ws</button>
+    <button id="message-return-ws">message-return-ws</button>
+    <button id="message-promise-ws">message-promise-ws</button>
+</div>
+<script src="js/app.js"></script>
 </body>
 </html>
