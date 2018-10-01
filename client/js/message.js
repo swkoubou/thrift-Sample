@@ -104,7 +104,7 @@ function promiseWSMessage() {
     let message = makeMessage();
     new Promise((resolve) => {
         thriftWSConnection.seqid++;
-        thriftWSConnection.SendMessage(message,sendMessageRes =>{
+        thriftWSConnection.SendMessage(message, sendMessageRes => {
             console.log(sendMessageRes);
             resolve(sendMessageRes);
         });
@@ -112,8 +112,8 @@ function promiseWSMessage() {
         console.log("sendRes");
         console.log(sendMessageRes);
         thriftWSConnection.seqid++;
-        return new Promise((resolve)=>{
-            thriftWSConnection.GetMessage(id,getMessageRes1=>{
+        return new Promise((resolve) => {
+            thriftWSConnection.GetMessage(id, getMessageRes1 => {
                 resolve(getMessageRes1);
             });
         });
@@ -122,8 +122,8 @@ function promiseWSMessage() {
         console.log(getMessageRes1);
         id++;
         thriftWSConnection.seqid++;
-        return new Promise((resolve)=>{
-            thriftWSConnection.GetMessage(id,getMessageRes2=>{
+        return new Promise((resolve) => {
+            thriftWSConnection.GetMessage(id, getMessageRes2 => {
                 resolve(getMessageRes2);
             });
         });
