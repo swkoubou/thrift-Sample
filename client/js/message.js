@@ -103,16 +103,26 @@ function promiseMessage() {
 function promiseWSMessage() {
     let message = makeMessage();
     new Promise((resolve) => {
-        resolve(thriftWSConnection.SendMessage(message));
+        thriftWSConnection.seqid++;
+        thriftWSConnection.SendMessage(message,res=>{
+            console.log(res);
+            resolve(res);
+        });
     }).then(res => {
         console.log("sendRes");
         console.log(res);
-        return thriftWSConnection.GetMessage(id);
+        thriftWSConnection.seqid++;
+        return thriftWSConnection.GetMessage(id,res=>{
+            return res;
+        });
     }).then(res => {
         console.log("getRes");
         console.log(res);
         id++;
-        return thriftWSConnection.GetMessage(id);
+        thriftWSConnection.seqid++;
+        return thriftWSConnection.GetMessage(id,res=>{
+            return res;
+        });
     }).then(res => {
         console.log("getRes");
         console.log(res);
