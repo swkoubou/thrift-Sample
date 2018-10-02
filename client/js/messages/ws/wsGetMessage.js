@@ -1,10 +1,6 @@
 function wsGetMessage() {
-    new Promise((resolve) => {
-        thriftWSConnection.seqid++;
-        thriftWSConnection.GetMessage(idController.id.value, getMessageRes => {
-            resolve(getMessageRes);
-        })
-    }).then(getMessageRes => {
+    thriftWSConnection.seqid++;
+    thriftWSConnection.GetMessage(idController.id.value).then(getMessageRes => {
         idController.add();
         console.log("getRes");
         console.log(getMessageRes);

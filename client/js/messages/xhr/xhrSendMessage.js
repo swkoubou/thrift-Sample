@@ -1,10 +1,6 @@
 function xhrSendMessage() {
     let message = makeMessage();
-    new Promise((resolve) => {
-        client.SendMessage(message, sendMessageRes =>{
-            resolve(sendMessageRes);
-        });
-    }).then(sendMessageRes => {
+    client.SendMessage(message).then(sendMessageRes => {
         idController.sendIdAdd();
         console.log("sendRes");
         console.log(sendMessageRes);
