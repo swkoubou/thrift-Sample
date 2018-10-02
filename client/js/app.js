@@ -15,4 +15,5 @@ class thriftHelper {
     }
 }
 
+let client = thriftHelper.thriftClient();
 let thriftWSConnection = thriftHelper.thriftWSClient();
