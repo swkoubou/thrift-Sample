@@ -1,16 +1,17 @@
 class IdController {
     constructor() {
-        this.id = document.querySelector("#message-id");
-        this.sendId = 0;
-        this.id.value = 0;
-    }
-
-    add(){
-        this.id.value++;
+        this.sendId = document.querySelector("#message-send-id");
+        this.getId = document.querySelector("#message-get-id");
+        this.sendId.value = 0;
+        this.getId.value = 0;
     }
 
     sendIdAdd(){
-        this.sendId++;
+        this.sendId.value++;
+    }
+
+    getIdAdd(){
+        this.getId.value++;
     }
 }
 

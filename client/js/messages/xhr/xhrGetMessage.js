@@ -1,14 +1,7 @@
 function xhrGetMessage() {
-    new Promise((resolve) => {
-        client.GetMessage(idController.id.value, getMessageRes => {
-            resolve(getMessageRes);
-        });
-    }).then(getMessageRes => {
-        idController.add();
+    client.GetMessage(idController.getId.value, getMessageRes => {
+        idController.getIdAdd();
         console.log("getRes");
         console.log(getMessageRes);
-    }).catch(err => {
-        console.error(err);
-
     });
 }
