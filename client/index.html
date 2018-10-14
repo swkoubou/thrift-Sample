@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/libs/thrift_1.0.0.js"></script>
+    <script src="../gen-js/Default.js"></script>
+    <script src="../gen-js/thrift_sample_types.js"></script>
+</head>
+<body>
+<input type="text" id="message-box" value="sample">
+<input type="text" id="message-id" placeholder="id">
+<div id="">
+    <div id="method">
+        <h2>Select method</h2>
+        <input type="radio" id="method-xhr" name="method" value="xhr">
+        <label for="method-xhr">xhr</label>
+        <input type="radio" id="method-ws" name="method" value="ws">
+        <label for="method-ws">ws</label>
+    </div>
+    <div id="test">
+        <h2>Do test XD</h2>
+        <button id="test-ping">Ping</button>
+        <button id="test-send">SendMessage</button>
+        <button id="test-get">GetMessage</button>
+    </div>
+</div>
+<script src="js/app.js"></script>
+<script src="js/ping.js"></script>
+<script src="js/messages/id.js"></script>
+<script src="js/messages/ws/wsGetMessage.js"></script>
+<script src="js/messages/ws/wsSendMessage.js"></script>
+<script src="js/messages/xhr/xhrGetMessage.js"></script>
+<script src="js/messages/xhr/xhrSendMessage.js"></script>
+<script src="js/message.js"></script>
+<script src="handler.js"></script>
+<script src="js/init.js"></script>
+</body>
+</html>
