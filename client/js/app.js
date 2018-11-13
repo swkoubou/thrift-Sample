@@ -1,7 +1,11 @@
 class thriftHelper {
     static thriftClient() {
         let endpoint = `http://localhost:9999/thrift`;
-        let transport = new Thrift.TXHRTransport(endpoint);
+        let transport = new Thrift.TXHRTransport(endpoint, {
+            customHeaders: {
+                "X-Access-Token": "hoge",
+            },
+        });
         let protocol = new Thrift.TJSONProtocol(transport);
         return new DefaultClient(protocol);
     }
